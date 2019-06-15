@@ -642,7 +642,7 @@ static void updateTx (ostime_t txbeg) {
     LMIC.freq  = freq & ~(u4_t)3;
     LMIC.txpow = band->txpow;
     band->avail = txbeg + airtime * band->txcap;
-    printf("%lu: freq=%lu\n", os_getTime(), LMIC.freq);
+    printf("%d: freq=%u\n", os_getTime(), LMIC.freq);
     if( LMIC.globalDutyRate != 0 )
         LMIC.globalDutyAvail = txbeg + (airtime<<LMIC.globalDutyRate);
 }
