@@ -1,5 +1,6 @@
-CFLAGS=-I../../lmic
-LDFLAGS=-lwiringPi
+CC=${CROSS_COMPILE}gcc
+CFLAGS+=-I../../lmic -I/usr/local/include -Winline -pipe -g3
+LDFLAGS+=-L/usr/local/lib -lwiringPi -lpthread -lm -lcrypt -lrt
 
 thethingsnetwork-send-v1: thethingsnetwork-send-v1.cpp
 	cd ../../lmic && $(MAKE)
@@ -11,3 +12,4 @@ all: thethingsnetwork-send-v1
 
 clean:
 	rm -f *.o thethingsnetwork-send-v1
+	rm -f ../../lmic/*.o
